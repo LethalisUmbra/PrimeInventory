@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RifleController;
+use App\Http\Controllers\WeaponController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TranslationController;
@@ -22,10 +22,13 @@ Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edi
 Route::post('changelocale', [TranslationController::class, 'changeLocale'])->name('changelocale');
 
 // Weapons
-Route::get('/primary/rifle', [RifleController::class, 'index'])->name('rifle.index');
+// Route::get('/primary/rifle', [WeaponController::class, 'rifle'])->name('weapon.rifle');
+Route::get('/primary/shotgun', [WeaponController::class, 'shotgun'])->name('weapon.shotgun');
+// Route::get('/primary/bow', [WeaponController::class, 'bow'])->name('weapon.bow');
+// Route::get('/primary/crossbow', [WeaponController::class, 'crossbow'])->name('weapon.crossbow');
 
 // Sections
-Route::view('/primary', 'primary.index')->name('primary');
+Route::view('/primary', 'primary.index')->name('primary')->middleware('auth');
 
 // Posts
 Route::resource('/post', PostController::class)

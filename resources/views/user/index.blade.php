@@ -1,7 +1,7 @@
 @extends('layout')
 
 @auth
-    @section('title', 'Users' )
+    @section('title', 'Users')
 @endauth
 
 @section('content')

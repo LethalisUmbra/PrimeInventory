@@ -3,9 +3,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use App\Models\Userrifle;
-use App\Models\Rifle;
+use App\Models\UserRifle;
 use Auth;
 
 class RifleTable extends Component
@@ -24,7 +22,7 @@ class RifleTable extends Component
 
     public function render()
     {
-        $rifle = DB::table('userrifles as ur')
+        $rifle = DB::table('user_rifles as ur')
                 -> join('rifles as r', 'ur.rifle_id','=','r.id')
                 -> join('users as u', 'ur.user_id','=','u.id')
                 ->select('r.id as id', 'r.name as name', 'r.blueprint as r_blueprint', 'r.barrel as r_barrel',
@@ -53,7 +51,7 @@ class RifleTable extends Component
     public function update_user_rifle(){
         for ($i = 0; $i < count($this->id_rifle); $i++)
         {
-            $rifle = Userrifle::where('rifle_id', $this->id_rifle[$i])->where('user_id', Auth::user()->id)->first();
+            $rifle = UserRifle::where('rifle_id', $this->id_rifle[$i])->where('user_id', Auth::user()->id)->first();
             $rifle->blueprint = $this->blueprint[$i];
             $rifle->barrel = $this->barrel[$i];
             $rifle->receiver = $this->receiver[$i];

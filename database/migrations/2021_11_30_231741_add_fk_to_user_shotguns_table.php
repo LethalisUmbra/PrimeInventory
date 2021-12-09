@@ -4,18 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFkToUserriflesTable extends Migration
+class AddFkToUserShotgunsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::table('userrifles', function (Blueprint $table) {
+        Schema::table('user_shotguns', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('rifle_id')->constrained('rifles')->cascadeOnDelete();
+            $table->foreignId('shotgun_id')->constrained('shotguns')->cascadeOnDelete();
         });
     }
 
@@ -26,9 +21,9 @@ class AddFkToUserriflesTable extends Migration
      */
     public function down()
     {
-        Schema::table('userrifles', function (Blueprint $table) {
+        Schema::table('user_shotguns', function (Blueprint $table) {
             $table->dropColumn('user_id');
-            $table->dropColumn('rifle_id');
+            $table->dropColumn('shotgun_id');
         });
     }
 }

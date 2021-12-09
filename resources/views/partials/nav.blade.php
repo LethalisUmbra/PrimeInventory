@@ -2,11 +2,11 @@
     <div class="container-fluid">
         <a class="navbar-brand me-2 px-2" href="{{ route('home') }}" style="height: 60px;"><img src="/img/wf.png" class="h-100 w-auto"></a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrime" aria-controls="navbarPrime" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div class="collapse navbar-collapse" id="navbarPrime">
           <ul class="navbar-nav me-auto mb-0">
             <li class="nav-item">
               <a class="nav-link {{ setActive('home') }} {{ setActive('post.*') }}" href="{{ route('home') }}">@lang('Home')</a>

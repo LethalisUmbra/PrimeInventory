@@ -24,7 +24,6 @@
             @include('partials.nav')
             @include('partials.error-status')
             @include('partials.session-status')
-            
         </header>
 
         @yield('carousel')
@@ -37,5 +36,8 @@
             @include('partials.footer')
         </footer>
     </div>
+
+    @yield('style')
+    
 </body>
 </html>

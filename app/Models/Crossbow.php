@@ -5,24 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserRifle extends Model
+class Crossbow extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'id',
+        'name',
         'blueprint',
+        'grip',
+        'string',
         'barrel',
         'receiver',
-        'stock',
-        'user_id',
-        'rifle_id',
     ];
-
+    
     public function getRouteKeyName()
     {
-        return 'user_id'.'rifle_id';
+        return 'name';
     }
-
-    public $timestamps = false; 
 }

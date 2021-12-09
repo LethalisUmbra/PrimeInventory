@@ -15,11 +15,10 @@ class Rifle extends Model
         'barrel',
         'receiver',
         'stock',
-        'slug',
     ];
     
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'name';
     }
 }

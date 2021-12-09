@@ -1,11 +1,11 @@
 @extends('layout')
 
-@section('title', __('Rifles'))
+@section('title', __('Shotguns'))
 
 @section('content')
     <div class="row m-0">
         <div class="col-12 col-sm-10 col-md-8 col-xl-6 mx-auto rounded">
-            @livewire('rifle-table')
+            @livewire('shotgun-table')
         </div>
     </div>
 
@@ -13,6 +13,7 @@
 
 @endsection
 
+@section('style')
 <style>
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -23,3 +24,4 @@
         -moz-appearance:textfield; /* Firefox */
     }
 </style>
+@endsection

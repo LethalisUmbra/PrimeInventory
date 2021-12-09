@@ -20,19 +20,19 @@
                 <tr>
                     <th scope="row">{{ $rifle->name }} Prime</th>
                     <td>
-                        <input min="0" onchange="document.getElementById('rifle_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:30px" class="rounded bg-transparent text-white  text-end shadow-none border border-{{ ($rifle->blueprint < $rifle->r_blueprint)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('rifle_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:30px" class="rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($rifle->blueprint < $rifle->r_blueprint)?"danger":"success" }}">
                         / {{ $rifle->r_blueprint }}
                     </td>
                     <td>
-                        <input min="0" onchange="document.getElementById('rifle_btn').click();" type="text" wire:model.defer="barrel.{{$loop->index}}" style="width:30px" class="rounded bg-transparent text-white  text-end shadow-none border border-{{ ($rifle->barrel < $rifle->r_barrel)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('rifle_btn').click();" type="number" wire:model.defer="barrel.{{$loop->index}}" style="width:30px" class="rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($rifle->barrel < $rifle->r_barrel)?"danger":"success" }}">
                         / {{ $rifle->r_barrel }}
                     </td>
                     <td>
-                        <input min="0" onchange="document.getElementById('rifle_btn').click();" type="text" wire:model.defer="receiver.{{$loop->index}}" style="width:30px" class="rounded bg-transparent text-white  text-end shadow-none border border-{{ ($rifle->receiver < $rifle->r_receiver)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('rifle_btn').click();" type="number" wire:model.defer="receiver.{{$loop->index}}" style="width:30px" class="rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($rifle->receiver < $rifle->r_receiver)?"danger":"success" }}">
                         / {{ $rifle->r_receiver }}
                     </td>
                     <td>
-                        <input min="0" onchange="document.getElementById('rifle_btn').click();" type="text" wire:model.defer="stock.{{$loop->index}}" style="width:30px" class="rounded bg-transparent text-white  text-end shadow-none border border-{{ ($rifle->stock < $rifle->r_stock)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('rifle_btn').click();" type="number" wire:model.defer="stock.{{$loop->index}}" style="width:30px" class="rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($rifle->stock < $rifle->r_stock)?"danger":"success" }}">
                         / {{ $rifle->r_stock }}
                     </td>
                 </tr>
@@ -48,3 +48,4 @@
         </tbody>
     </table>
 </form>
+
