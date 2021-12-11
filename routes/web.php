@@ -21,14 +21,9 @@ Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edi
 // Locale
 Route::post('changelocale', [TranslationController::class, 'changeLocale'])->name('changelocale');
 
-// Weapons
-// Route::get('/primary/rifle', [WeaponController::class, 'rifle'])->name('weapon.rifle');
-Route::get('/primary/shotgun', [WeaponController::class, 'shotgun'])->name('weapon.shotgun');
-// Route::get('/primary/bow', [WeaponController::class, 'bow'])->name('weapon.bow');
-// Route::get('/primary/crossbow', [WeaponController::class, 'crossbow'])->name('weapon.crossbow');
-
 // Sections
-Route::view('/primary', 'primary.index')->name('primary')->middleware('auth');
+Route::view('/primary', 'category.primary')->name('primary')->middleware('auth');
+Route::view('/secondary', 'category.secondary')->name('secondary')->middleware('auth');
 
 // Posts
 Route::resource('/post', PostController::class)

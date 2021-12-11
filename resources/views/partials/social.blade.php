@@ -36,7 +36,7 @@
     <a href="https://github.com/LethalisUmbra/PrimeInventory" target="_blank" class="text-decoration-none text-dark d-block d-lg-flex col-6 col-lg-12">
         <div class="row p-2 d-block d-lg-flex bg-white shadow-sm my-3">
             <div class="col-3 p-1 text-center mx-auto"><i class="fab fa-github fa-3x" style="color: #000;"></i></div>
-            <div class="col-9 p-1 m-auto text-center text-lg-start"><strong>@lang('Read the latest changes!')</strong></div>
+            <div class="col-9 p-1 m-auto text-center text-lg-start"><strong style="font-size: 90%;">@lang('Read the latest changes!')</strong></div>
             <div class="col-3 p-1 mx-auto"><img src="img/social-logo.png" class="img-responsive rounded-3 d-block mx-auto" style="width:80%; height:auto"></div>
             <div class="col-9 m-auto text-center text-lg-start p-0">
                 <strong>PrimeInventory</strong>

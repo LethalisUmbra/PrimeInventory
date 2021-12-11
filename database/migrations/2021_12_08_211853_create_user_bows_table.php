@@ -16,6 +16,7 @@ class CreateUserBowsTable extends Migration
             $table->integer('lower_limb')->default(0);
             $table->integer('grip')->default(0);
             $table->integer('string')->default(0);
+            $table->boolean('owned')->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

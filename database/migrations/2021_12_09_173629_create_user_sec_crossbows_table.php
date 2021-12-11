@@ -5,16 +5,16 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateUserCrossbowsTable extends Migration
+class CreateUserSecCrossbowsTable extends Migration
 {
     public function up()
     {
-        Schema::create('user_crossbows', function (Blueprint $table) {
+        Schema::create('user_sec_crossbows', function (Blueprint $table) {
             $table->id();
             $table->integer('blueprint')->default(0);
-            $table->integer('grip')->default(0);
+            $table->integer('upper_limb')->default(0);
+            $table->integer('lower_limb')->default(0);
             $table->integer('string')->default(0);
-            $table->integer('barrel')->default(0);
             $table->integer('receiver')->default(0);
             $table->boolean('owned')->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
@@ -24,6 +24,6 @@ class CreateUserCrossbowsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('user_crossbows');
+        Schema::dropIfExists('user_sec_crossbows');
     }
 }

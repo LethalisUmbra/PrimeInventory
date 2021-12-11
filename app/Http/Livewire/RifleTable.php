@@ -10,6 +10,7 @@ class RifleTable extends Component
 {
     public $id_rifle = [];
     public $name = [];
+    public $owned = [];
     public $blueprint = [];
     public $r_blueprint = [];
     public $barrel = [];
@@ -25,14 +26,16 @@ class RifleTable extends Component
         $rifle = DB::table('user_rifles as ur')
                 -> join('rifles as r', 'ur.rifle_id','=','r.id')
                 -> join('users as u', 'ur.user_id','=','u.id')
-                ->select('r.id as id', 'r.name as name', 'r.blueprint as r_blueprint', 'r.barrel as r_barrel',
-                        'r.receiver as r_receiver', 'r.stock as r_stock', 'ur.blueprint as blueprint', 'ur.barrel as barrel', 'ur.receiver as receiver', 'ur.stock as stock')
+                ->select('r.id as id', 'r.name as name', 'ur.owned as owned',
+                        'r.blueprint as r_blueprint', 'r.barrel as r_barrel', 'r.receiver as r_receiver', 'r.stock as r_stock',
+                        'ur.blueprint as blueprint', 'ur.barrel as barrel', 'ur.receiver as receiver', 'ur.stock as stock')
                 ->where('ur.user_id','=',Auth::user()->id)->get();
 
         for ($i = 0; $i < count($rifle); $i++)
         {
             $this->id_rifle[$i] = $rifle[$i]->id;
             $this->name[$i] = $rifle[$i]->name;
+            $this->owned[$i] = $rifle[$i]->owned;
             $this->blueprint[$i] = $rifle[$i]->blueprint;
             $this->r_blueprint[$i] = $rifle[$i]->r_blueprint;
             $this->barrel[$i] = $rifle[$i]->barrel;
@@ -52,10 +55,11 @@ class RifleTable extends Component
         for ($i = 0; $i < count($this->id_rifle); $i++)
         {
             $rifle = UserRifle::where('rifle_id', $this->id_rifle[$i])->where('user_id', Auth::user()->id)->first();
-            $rifle->blueprint = $this->blueprint[$i];
-            $rifle->barrel = $this->barrel[$i];
-            $rifle->receiver = $this->receiver[$i];
-            $rifle->stock = $this->stock[$i];
+            $rifle->owned = $this->owned[$i];
+            $rifle->blueprint = (int)$this->blueprint[$i];
+            $rifle->barrel = (int)$this->barrel[$i];
+            $rifle->receiver = (int)$this->receiver[$i];
+            $rifle->stock = (int)$this->stock[$i];
             $rifle->save();
         }
     }

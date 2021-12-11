@@ -15,6 +15,7 @@ class CreateUserShotgunsTable extends Migration
             $table->integer('barrel')->default(0);
             $table->integer('receiver')->default(0);
             $table->integer('stock')->default(0);
+            $table->boolean('owned')->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

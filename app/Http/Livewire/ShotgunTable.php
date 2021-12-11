@@ -10,6 +10,7 @@ class ShotgunTable extends Component
 {
     public $id_shotgun = [];
     public $name = [];
+    public $owned = [];
     public $blueprint = [];
     public $r_blueprint = [];
     public $barrel = [];
@@ -25,14 +26,16 @@ class ShotgunTable extends Component
         $shotgun = DB::table('user_shotguns as us')
                 -> join('shotguns as s', 'us.shotgun_id','=','s.id')
                 -> join('users as u', 'us.user_id','=','u.id')
-                ->select('s.id as id', 's.name as name', 's.blueprint as r_blueprint', 's.barrel as r_barrel',
-                        's.receiver as r_receiver', 's.stock as r_stock', 'us.blueprint as blueprint', 'us.barrel as barrel', 'us.receiver as receiver', 'us.stock as stock')
+                ->select('s.id as id', 's.name as name', 'us.owned as owned',
+                    's.blueprint as r_blueprint', 's.barrel as r_barrel', 's.receiver as r_receiver', 's.stock as r_stock',
+                    'us.blueprint as blueprint', 'us.barrel as barrel', 'us.receiver as receiver', 'us.stock as stock')
                 ->where('us.user_id','=',Auth::user()->id)->get();
 
         for ($i = 0; $i < count($shotgun); $i++)
         {
             $this->id_shotgun[$i] = $shotgun[$i]->id;
             $this->name[$i] = $shotgun[$i]->name;
+            $this->owned[$i] = $shotgun[$i]->owned;
             $this->blueprint[$i] = $shotgun[$i]->blueprint;
             $this->r_blueprint[$i] = $shotgun[$i]->r_blueprint;
             $this->barrel[$i] = $shotgun[$i]->barrel;
@@ -51,12 +54,13 @@ class ShotgunTable extends Component
     public function update_user_shotgun(){
         for ($i = 0; $i < count($this->id_shotgun); $i++)
         {
-            $rifle = UserShotgun::where('shotgun_id', $this->id_shotgun[$i])->where('user_id', Auth::user()->id)->first();
-            $rifle->blueprint = $this->blueprint[$i];
-            $rifle->barrel = $this->barrel[$i];
-            $rifle->receiver = $this->receiver[$i];
-            $rifle->stock = $this->stock[$i];
-            $rifle->save();
+            $shotgun = UserShotgun::where('shotgun_id', $this->id_shotgun[$i])->where('user_id', Auth::user()->id)->first();
+            $shotgun->owned = $this->owned[$i];
+            $shotgun->blueprint = (int)$this->blueprint[$i];
+            $shotgun->barrel = (int)$this->barrel[$i];
+            $shotgun->receiver = (int)$this->receiver[$i];
+            $shotgun->stock = (int)$this->stock[$i];
+            $shotgun->save();
         }
     }
 }

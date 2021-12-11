@@ -12,7 +12,10 @@
               <a class="nav-link {{ setActive('home') }} {{ setActive('post.*') }}" href="{{ route('home') }}">@lang('Home')</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ setActive('primary') }} {{ setActive('rifle.*') }}" href="{{ route('primary') }}">@lang('Primaries')</a>
+              <a class="nav-link {{ setActive('primary') }}" href="{{ route('primary') }}">@lang('Primaries')</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ setActive('secondary') }}" href="{{ route('secondary') }}">@lang('Secondaries')</a>
             </li>
           </ul>
 
@@ -34,7 +37,7 @@
               </li>
             @else
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle {{setActive('user.*')}}" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {{ Auth::user()->name }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

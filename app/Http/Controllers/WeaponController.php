@@ -15,19 +15,4 @@ class WeaponController extends Controller
     //     return view('primary.rifle');
     // }
 
-    public function shotgun()
-    {
-        return view('primary.shotgun');
-    }
-
-    // public function bow()
-    // {
-    //     return view('primary.bow');
-    // }
-
-    // public function crossbow()
-    // {
-    //     return view('primary.crossbow');
-    // }
-
 }

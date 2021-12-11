@@ -10915,3 +10915,8 @@ textarea.form-control-lg {
 .michroma {
   font-family: "Michroma", sans-serif;
 }
+
+.form-check-input:checked {
+  background-color: #e8cd00;
+  border-color: #e8cd00;
+}

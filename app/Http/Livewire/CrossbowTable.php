@@ -14,6 +14,7 @@ class CrossbowTable extends Component
     // Remember change components depending on category
     public $id_crossbow = [];
     public $name = [];
+    public $owned = [];
     public $blueprint = [];
     public $r_blueprint = [];
     public $grip = [];
@@ -30,7 +31,7 @@ class CrossbowTable extends Component
         $crossbow = DB::table('user_crossbows as uc') // user_[category]s as uc
                 -> join('crossbows as c', 'uc.crossbow_id','=','c.id') // [category]s as w
                 -> join('users as u', 'uc.user_id','=','u.id')
-                ->select('c.id as id', 'c.name as name',
+                ->select('c.id as id', 'c.name as name', 'uc.owned as owned',
                         'c.blueprint as r_blueprint', 'c.grip as r_grip', 'c.string as r_string', 'c.barrel as r_barrel', 'c.receiver as r_receiver',
                         'uc.blueprint as blueprint', 'uc.grip as grip', 'uc.string as string', 'uc.barrel as barrel', 'uc.receiver as receiver')
                 ->where('uc.user_id','=',Auth::user()->id)->get();
@@ -39,6 +40,7 @@ class CrossbowTable extends Component
         {
             $this->id_crossbow[$i] = $crossbow[$i]->id;
             $this->name[$i] = $crossbow[$i]->name;
+            $this->owned[$i] = $crossbow[$i]->owned;
             $this->blueprint[$i] = $crossbow[$i]->blueprint;
             $this->r_blueprint[$i] = $crossbow[$i]->r_blueprint;
             $this->grip[$i] = $crossbow[$i]->grip;
@@ -63,11 +65,12 @@ class CrossbowTable extends Component
         {
             // User[Category]
             $crossbow = UserCrossbow::where('crossbow_id', $this->id_crossbow[$i])->where('user_id', Auth::user()->id)->first();
-            $crossbow->blueprint = $this->blueprint[$i];
-            $crossbow->grip = $this->grip[$i];
-            $crossbow->string = $this->string[$i];
-            $crossbow->barrel = $this->barrel[$i];
-            $crossbow->receiver = $this->receiver[$i];
+            $crossbow->owned = $this->owned[$i];
+            $crossbow->blueprint = (int)$this->blueprint[$i];
+            $crossbow->grip = (int)$this->grip[$i];
+            $crossbow->string = (int)$this->string[$i];
+            $crossbow->barrel = (int)$this->barrel[$i];
+            $crossbow->receiver = (int)$this->receiver[$i];
             $crossbow->save();
         }
     }
