@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="row d-flex justify-content-center mx-0">
+<div class="row d-flex justify-content-center mx-0 py-4">
     <div class="col-12 mb-3 col-md-2 px-md-0">
         <div class="bg-white py-3 px-4 rounded shadow border">
             <h5>@lang('Categories')</h5>

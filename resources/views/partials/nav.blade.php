@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark p-0">
     <div class="container-fluid">
         <a class="navbar-brand me-2 px-2" href="{{ route('home') }}" style="height: 60px;"><img src="/img/wf.png" class="h-100 w-auto"></a>
 
@@ -11,11 +11,24 @@
             <li class="nav-item">
               <a class="nav-link {{ setActive('home') }} {{ setActive('post.*') }}" href="{{ route('home') }}">@lang('Home')</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link {{ setActive('primary') }}" href="{{ route('primary') }}">@lang('Primaries')</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle {{ setActive('primary') }} {{ setActive('secondary') }} {{ setActive('melee') }}" href="#" id="navbarDropdownWeapons" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @lang('Weapons')
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownWeapons">
+                <li><a class="dropdown-item" href="{{ route('primary') }}">@lang('Primaries')</a></li>
+                <li><a class="dropdown-item" href="{{ route('secondary') }}">@lang('Secondaries')</a></li>
+                <li><a class="dropdown-item" href="#">@lang('Melees')</a></li>
+              </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ setActive('secondary') }}" href="{{ route('secondary') }}">@lang('Secondaries')</a>
+              <a class="nav-link {{ setActive('warframe') }}" href="{{ route('warframe') }}">@lang('Warframes')</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ setActive('companion') }}" href="{{ route('companion') }}">@lang('Companions')</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ setActive('archwing') }}" href="{{ route('archwing') }}">@lang('Archwings')</a>
             </li>
           </ul>
 

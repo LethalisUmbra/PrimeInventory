@@ -24,11 +24,10 @@
             @include('partials.nav')
             @include('partials.error-status')
             @include('partials.session-status')
+            @yield('carousel')
         </header>
 
-        @yield('carousel')
-
-        <main class="py-4">
+        <main class="my-auto">
             @yield('content')
         </main>
 
