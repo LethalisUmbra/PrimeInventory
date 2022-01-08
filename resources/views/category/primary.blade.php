@@ -31,6 +31,11 @@
                 <input class="form-check-input" type="checkbox" id="crossbow_cb" name="crossbow" value="crossbow_cb" checked onchange="switcher('crossbow')">
                 <label for="crossbow_cb">@lang('Crossbow')</label>
             </div>
+
+            <div class="my-2">
+                <input class="form-check-input" type="checkbox" id="speargun_cb" name="speargun" value="speargun_cb" checked onchange="switcher('speargun')">
+                <label for="speargun_cb">@lang('Speargun')</label>
+            </div>
         </div>
     </div>
 
@@ -57,6 +62,12 @@
         <div class="row m-0 mb-3" id="crossbow">
             <div class="mx-auto rounded table-responsive">
                 @livewire('crossbow-table')
+            </div>
+        </div>
+
+        <div class="row m-0 mb-3" id="speargun">
+            <div class="mx-auto rounded table-responsive">
+                @livewire('speargun-table')
             </div>
         </div>
 

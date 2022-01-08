@@ -43,6 +43,8 @@
                 </div>
             @empty
             @endforelse
+
+           <span class="d-flex justify-content-center">{{ $posts->links() }}</span>
         </div>
 
         <!-- Social -->
@@ -53,4 +55,25 @@
     
     
 </div>
+@endsection
+
+@section('style')
+<style> 
+.pagination > li > a,
+.pagination > li > span
+{
+    color: #c7b000;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover
+{
+    background-color: #e8cd00 !important;
+    border-color: #e8cd00 !important;
+}
+</style>
 @endsection

@@ -16,11 +16,14 @@ class PostController extends Controller
         $this->middleware('admin')->except('index');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $session = $request->session();
+        ($session->has('first_visit')) ? $session->put('first_visit', false) : $session->put('first_visit', true);
         return view('home', [
             'posts' => Post::latest('created_at')->paginate(),
-            'carousel' => Post::latest('created_at')->take(2)->get()
+            'carousel' => Post::latest('created_at')->take(2)->get(),
+            'first_visit' => $session->get('first_visit')
         ]);
     }
 

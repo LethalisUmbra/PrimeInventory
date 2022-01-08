@@ -13,15 +13,24 @@
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> 
 
     @livewireStyles
 
 </head>
 <body>
     <div id="app" class="d-flex flex-column h-screen justify-content-between">
-
         <header>
             @include('partials.nav')
+            @if(Route::current()->getName() == 'home')
+                @if($first_visit)
+                    <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
+                        <strong>Prime Inventory</strong> is a fanmade website and it is not associated with <strong>Digital Extremes</strong>.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+            @endif
             @include('partials.error-status')
             @include('partials.session-status')
             @yield('carousel')

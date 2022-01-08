@@ -17,7 +17,7 @@
             @forelse ($bows as $bow)
                 <input type="hidden" wire:model="id_bow.{{ $loop->index }}">
                 <tr>
-                    <th scope="row" class="col-2 @if($bow->blueprint>=$bow->r_blueprint & $bow->upper_limb>=$bow->r_upper_limb & $bow->lower_limb>=$bow->r_lower_limb & $bow->grip>=$bow->r_grip & $bow->string>=$bow->r_string) text-success @else text-white @endif">{{ $bow->name }} Prime</th>
+                    <th id="{{$bow->name}}%20Prime" scope="row" class="prime-item col-2 @if($bow->blueprint>=$bow->r_blueprint & $bow->upper_limb>=$bow->r_upper_limb & $bow->lower_limb>=$bow->r_lower_limb & $bow->grip>=$bow->r_grip & $bow->string>=$bow->r_string) text-success @else text-white @endif">{{ $bow->name }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('bow_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($bow->blueprint < $bow->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $bow->r_blueprint }}</p>

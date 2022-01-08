@@ -15,7 +15,7 @@
             @forelse ($collars as $collar)
                 <input type="hidden" wire:model="id_collar.{{ $loop->index }}">
                 <tr>
-                    <th scope="row" class="col-6 @if($collar->blueprint>=$collar->r_blueprint & $collar->band>=$collar->r_band & $collar->buckle>=$collar->r_buckle) text-success @else text-white @endif">{{ $collar->name }} Prime</th>
+                    <th id="{{$collar->name}}%20Prime" scope="row" class="prime-item col-6 @if($collar->blueprint>=$collar->r_blueprint & $collar->band>=$collar->r_band & $collar->buckle>=$collar->r_buckle) text-success @else text-white @endif">{{ $collar->name }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('collar_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($collar->blueprint < $collar->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $collar->r_blueprint }}</p>

@@ -17,7 +17,7 @@
             @forelse ($sec_crossbows as $sec_crossbow)
                 <input type="hidden" wire:model="sec_crossbow.{{ $loop->index }}">
                 <tr>
-                    <th scope="row" class="col-2 @if($sec_crossbow->blueprint>=$sec_crossbow->r_blueprint & $sec_crossbow->upper_limb>=$sec_crossbow->r_upper_limb & $sec_crossbow->lower_limb>=$sec_crossbow->r_lower_limb & $sec_crossbow->receiver>=$sec_crossbow->r_receiver & $sec_crossbow->string>=$sec_crossbow->r_string) text-success @else text-white @endif">{{ $sec_crossbow->name }} Prime</th>
+                    <th id="{{$sec_crossbow->name}}%20Prime" scope="row" class="prime-item col-2 @if($sec_crossbow->blueprint>=$sec_crossbow->r_blueprint & $sec_crossbow->upper_limb>=$sec_crossbow->r_upper_limb & $sec_crossbow->lower_limb>=$sec_crossbow->r_lower_limb & $sec_crossbow->receiver>=$sec_crossbow->r_receiver & $sec_crossbow->string>=$sec_crossbow->r_string) text-success @else text-white @endif">{{ $sec_crossbow->name }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('sec_crossbow_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($sec_crossbow->blueprint < $sec_crossbow->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $sec_crossbow->r_blueprint }}</p>

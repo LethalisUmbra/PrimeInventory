@@ -15,7 +15,7 @@
             @forelse ($ak_weapons as $ak_weapon)
                 <input type="hidden" wire:model="id_ak_weapon.{{ $loop->index }}">
                 <tr>
-                    <th scope="row" class="col-6 @if($ak_weapon->blueprint>=$ak_weapon->r_blueprint & $ak_weapon->single_weapon>=$ak_weapon->r_single_weapon & $ak_weapon->link>=$ak_weapon->r_link) text-success @else text-white @endif">{{ $ak_weapon->name }} Prime</th>
+                    <th id="{{$ak_weapon->name}}%20Prime" scope="row" class="prime-item col-6 @if($ak_weapon->blueprint>=$ak_weapon->r_blueprint & $ak_weapon->single_weapon>=$ak_weapon->r_single_weapon & $ak_weapon->link>=$ak_weapon->r_link) text-success @else text-white @endif">{{ $ak_weapon->name }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('ak_weapon_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($ak_weapon->blueprint < $ak_weapon->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $ak_weapon->r_blueprint }}</p>

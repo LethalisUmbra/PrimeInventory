@@ -5227,6 +5227,26 @@ Vue.component('example-component', (__webpack_require__(/*! ./components/Example
 var app = new Vue({
   el: '#app'
 });
+$(document).ready(function () {
+  var items = document.getElementsByClassName('prime-item');
+
+  for (i = 0; i < items.length; i++) {
+    items[i].onload = getWikiUrl(items[i].id);
+  }
+});
+
+function getWikiUrl(item_id) {
+  $.getJSON('https://api.warframestat.us/items/search/' + item_id, function (data) {
+    itemData = data[0]; // In case that a weapon has a dual variation, needs to be added here.
+
+    if (item_id == 'Lex%20Prime' || item_id == 'Vasto%20Prime' || item_id == 'Bronco%20Prime') {
+      itemData = data[1];
+    }
+
+    var item = document.getElementById(item_id);
+    item.setAttribute("onclick", "window.open('" + itemData.wikiaUrl + "', '_blank')");
+  });
+}
 
 /***/ }),
 

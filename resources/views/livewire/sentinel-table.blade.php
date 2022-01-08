@@ -16,7 +16,7 @@
             @forelse ($sentinels as $sentinel)
                 <input type="hidden" wire:model="id_sentinel.{{ $loop->index }}">
                 <tr>
-                    <th scope="row" class="col-4 @if($sentinel->blueprint>=$sentinel->r_blueprint & $sentinel->cerebrum>=$sentinel->r_cerebrum & $sentinel->carapace>=$sentinel->r_carapace & $sentinel->systems>=$sentinel->r_systems) text-success @else text-white @endif">{{ $sentinel->name }} Prime</th>
+                    <th id="{{$sentinel->name}}%20Prime" scope="row" class="prime-item col-4 @if($sentinel->blueprint>=$sentinel->r_blueprint & $sentinel->cerebrum>=$sentinel->r_cerebrum & $sentinel->carapace>=$sentinel->r_carapace & $sentinel->systems>=$sentinel->r_systems) text-success @else text-white @endif">{{ $sentinel->name }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('sentinel_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($sentinel->blueprint < $sentinel->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $sentinel->r_blueprint }}</p>

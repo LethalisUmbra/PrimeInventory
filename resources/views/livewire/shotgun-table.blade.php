@@ -16,7 +16,7 @@
             @forelse ($shotguns as $shotgun)
                 <input type="hidden" wire:model="id_shotgun.{{ $loop->index }}">
                 <tr>
-                    <th scope="row" class="col-4 @if($shotgun->blueprint>=$shotgun->r_blueprint & $shotgun->barrel>=$shotgun->r_barrel & $shotgun->receiver>=$shotgun->r_receiver & $shotgun->stock>=$shotgun->r_stock) text-success @else text-white @endif">{{ $shotgun->name }} Prime</th>
+                    <th id="{{$shotgun->name}}%20Prime" scope="row" class="prime-item col-4 @if($shotgun->blueprint>=$shotgun->r_blueprint & $shotgun->barrel>=$shotgun->r_barrel & $shotgun->receiver>=$shotgun->r_receiver & $shotgun->stock>=$shotgun->r_stock) text-success @else text-white @endif">{{ $shotgun->name }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('shotgun_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($shotgun->blueprint < $shotgun->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $shotgun->r_blueprint }}</p>

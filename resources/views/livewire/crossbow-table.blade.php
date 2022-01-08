@@ -17,7 +17,7 @@
             @forelse ($crossbows as $crossbow)
                 <input type="hidden" wire:model="id_crossbow.{{ $loop->index }}">
                 <tr>
-                    <th scope="row" class="col-2 @if($crossbow->blueprint>=$crossbow->r_blueprint & $crossbow->barrel>=$crossbow->r_barrel & $crossbow->receiver>=$crossbow->r_receiver & $crossbow->grip>=$crossbow->r_grip & $crossbow->string>=$crossbow->r_string) text-success @else text-white @endif">{{ $crossbow->name }} Prime</th>
+                    <th id="{{$crossbow->name}}%20Prime" scope="row" class="prime-item col-2 @if($crossbow->blueprint>=$crossbow->r_blueprint & $crossbow->barrel>=$crossbow->r_barrel & $crossbow->receiver>=$crossbow->r_receiver & $crossbow->grip>=$crossbow->r_grip & $crossbow->string>=$crossbow->r_string) text-success @else text-white @endif">{{ $crossbow->name }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('crossbow_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($crossbow->blueprint < $crossbow->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $crossbow->r_blueprint }}</p>

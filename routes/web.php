@@ -24,7 +24,7 @@ Route::post('changelocale', [TranslationController::class, 'changeLocale'])->nam
 // Sections
 Route::view('/primary', 'category.primary')->name('primary')->middleware('auth');
 Route::view('/secondary', 'category.secondary')->name('secondary')->middleware('auth');
-// Route::view('/melee', 'category.melee')->name('melee')->middleware('auth');
+Route::view('/melee', 'category.melee')->name('melee')->middleware('auth');
 Route::view('/warframe', 'category.warframe')->name('warframe')->middleware('auth');
 Route::view('/companion', 'category.companion')->name('companion')->middleware('auth');
 Route::view('/archwing', 'category.archwing')->name('archwing')->middleware('auth');

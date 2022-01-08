@@ -23,9 +23,8 @@
       <ul class="list-group">
         <li style="list-style-type: none;"><a target="_blank" href="http://forums.warframe.com/" class="text-muted text-decoration-none">@lang('Forums')</a></li>
         <li style="list-style-type: none;"><a target="_blank" href="http://warframe.wikia.com/wiki/WARFRAME_Wiki" class="text-muted text-decoration-none">@lang('Warframe Wikia')</a></li>
-        <li style="list-style-type: none;"><a target="_blank" href="https://www.warframe.com/contentpolicy" class="text-muted text-decoration-none">@lang('Content Policy')</a></li>
-        <li style="list-style-type: none;"><a target="_blank" href="https://www.warframe.com/music-policy" class="text-muted text-decoration-none">@lang('Music Policy')</a></li>
-        <li style="list-style-type: none;"><a target="_blank" href="https://www.warframe.com/fan-merchandise-policy" class="text-muted text-decoration-none">@lang('Fan Merch Policy')</a></li>
+        <li style="list-style-type: none;"><a target="_blank" href="https://warframe.market" class="text-muted text-decoration-none">@lang('Market')</a></li>
+
       </ul>
     </div>
   

@@ -20,6 +20,9 @@ class CreatePistolsTable extends Migration
         });
 
         DB::table('pistols')->insert([
+            [
+                'name' => 'Knell',
+            ],
             [   
                 'name' => 'Lex',
             ],

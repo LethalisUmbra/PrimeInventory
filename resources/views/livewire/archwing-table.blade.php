@@ -16,7 +16,7 @@
             @forelse ($archwings as $archwing)
                 <input type="hidden" wire:model="id_archwing.{{ $loop->index }}">
                 <tr>
-                    <th scope="row" class="col-4 @if($archwing->blueprint>=$archwing->r_blueprint & $archwing->harness>=$archwing->r_harness & $archwing->wings>=$archwing->r_wings & $archwing->systems>=$archwing->r_systems) text-success @else text-white @endif">{{ $archwing->name }} Prime</th>
+                    <th id="{{$archwing->name}}%20Prime" scope="row" class="prime-item col-4 @if($archwing->blueprint>=$archwing->r_blueprint & $archwing->harness>=$archwing->r_harness & $archwing->wings>=$archwing->r_wings & $archwing->systems>=$archwing->r_systems) text-success @else text-white @endif">{{ $archwing->name }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('archwing_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($archwing->blueprint < $archwing->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $archwing->r_blueprint }}</p>
