@@ -19,6 +19,7 @@
                 <li><a class="dropdown-item" href="{{ route('primary') }}">@lang('Primaries')</a></li>
                 <li><a class="dropdown-item" href="{{ route('secondary') }}">@lang('Secondaries')</a></li>
                 <li><a class="dropdown-item" href="{{ route('melee') }}">@lang('Melees')</a></li>
+                <li><a class="dropdown-item" href="{{ route('archgun') }}">@lang('Archguns')</a></li>
               </ul>
             </li>
             <li class="nav-item">

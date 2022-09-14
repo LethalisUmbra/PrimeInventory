@@ -46,6 +46,9 @@ class CreateWarframesTable extends Migration
                 'name' => 'Gara',
             ],
             [
+                'name' => 'Garuda',
+            ],
+            [
                 'name' => 'Harrow',
             ],
             [
@@ -56,6 +59,9 @@ class CreateWarframesTable extends Migration
             ],
             [
                 'name' => 'Ivara',
+            ],
+            [
+                'name' => 'Khora',
             ],
             [
                 'name' => 'Limbo',

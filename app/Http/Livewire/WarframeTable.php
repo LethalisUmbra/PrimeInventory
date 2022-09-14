@@ -29,7 +29,9 @@ class WarframeTable extends Component
                 ->select('r.id as id', 'r.name as name', 'ur.owned as owned',
                         'r.blueprint as r_blueprint', 'r.neuroptics as r_neuroptics', 'r.chassis as r_chassis', 'r.systems as r_systems',
                         'ur.blueprint as blueprint', 'ur.neuroptics as neuroptics', 'ur.chassis as chassis', 'ur.systems as systems')
-                ->where('ur.user_id','=',Auth::user()->id)->get();
+                ->where('ur.user_id','=',Auth::user()->id)
+                ->orderBy('r.name')
+                ->get();
 
         for ($i = 0; $i < count($warframe); $i++)
         {

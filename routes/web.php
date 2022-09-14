@@ -28,6 +28,7 @@ Route::view('/melee', 'category.melee')->name('melee')->middleware('auth');
 Route::view('/warframe', 'category.warframe')->name('warframe')->middleware('auth');
 Route::view('/companion', 'category.companion')->name('companion')->middleware('auth');
 Route::view('/archwing', 'category.archwing')->name('archwing')->middleware('auth');
+Route::view('/archgun', 'category.archgun')->name('archgun')->middleware('auth');
 
 // Posts
 Route::resource('/post', PostController::class)

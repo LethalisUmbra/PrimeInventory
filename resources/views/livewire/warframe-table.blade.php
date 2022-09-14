@@ -16,7 +16,19 @@
             @forelse ($warframes as $warframe)
                 <input type="hidden" wire:model="id_warframe.{{ $loop->index }}">
                 <tr>
-                    <th id="{{$warframe->name}}%20Prime" scope="row" class="prime-item col-4 @if($warframe->blueprint>=$warframe->r_blueprint & $warframe->neuroptics>=$warframe->r_neuroptics & $warframe->chassis>=$warframe->r_chassis & $warframe->systems>=$warframe->r_systems) text-success @else text-white @endif">{{ $warframe->name }} Prime</th>
+                    <th id="{{$warframe->name}}%20Prime"
+                        scope="row"
+                        class="prime-item col-4
+                        @if($warframe->blueprint>=$warframe->r_blueprint & $warframe->neuroptics>=$warframe->r_neuroptics & $warframe->chassis>=$warframe->r_chassis & $warframe->systems>=$warframe->r_systems)
+                            @if ($warframe->owned)
+                                text-success
+                            @else
+                                text-warning
+                            @endif
+                        @else
+                            text-white
+                        @endif"
+                    >{{ $warframe->name }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('warframe_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($warframe->blueprint < $warframe->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $warframe->r_blueprint }}</p>

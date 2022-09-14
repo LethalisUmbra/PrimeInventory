@@ -195,6 +195,38 @@ class CreateUserFillTrigger extends Migration
                 INSERT INTO user_sword_shields (user_id, sword_shield_id) VALUES (NEW.id, v_index);
                 SET v_index = v_index + 1;
             END WHILE;
+
+            SET v_index = 1;
+
+            SELECT count(*) INTO v_counter FROM thrown;
+            WHILE v_index <= v_counter DO
+                INSERT INTO user_throwns (user_id, thrown_id) VALUES (NEW.id, v_index);
+                SET v_index = v_index + 1;
+            END WHILE;
+
+            SET v_index = 1;
+
+            SELECT count(*) INTO v_counter FROM warframe;
+            WHILE v_index <= v_counter DO
+                INSERT INTO user_warframes (user_id, warframe_id) VALUES (NEW.id, v_index);
+                SET v_index = v_index + 1;
+            END WHILE;
+
+            SET v_index = 1;
+
+            SELECT count(*) INTO v_counter FROM speargun;
+            WHILE v_index <= v_counter DO
+                INSERT INTO user_spearguns (user_id, speargun_id) VALUES (NEW.id, v_index);
+                SET v_index = v_index + 1;
+            END WHILE;
+
+            SET v_index = 1;
+
+            SELECT count(*) INTO v_counter FROM archgun;
+            WHILE v_index <= v_counter DO
+                INSERT INTO user_archguns (user_id, archguns_id) VALUES (NEW.id, v_index);
+                SET v_index = v_index + 1;
+            END WHILE;
         END
         ');
          
@@ -706,6 +738,27 @@ class CreateUserFillTrigger extends Migration
             CLOSE cursor_i;
         END
         ');
+
+        /* 25 - Archguns */
+        DB::unprepared('
+        CREATE TRIGGER tr_fill_user_archguns AFTER INSERT ON archguns FOR EACH ROW
+        BEGIN
+            DECLARE c_user_id INT;
+            DECLARE done INT default FALSE;
+            DECLARE cursor_i CURSOR FOR SELECT id FROM users;
+            DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+            OPEN cursor_i;
+            insert_loop: LOOP
+                FETCH cursor_i INTO c_user_id;
+                IF done THEN
+                    LEAVE insert_loop;
+                END IF;
+                INSERT INTO user_archguns (user_id, archguns_id) VALUES (c_user_id, NEW.id);
+            END LOOP;
+            CLOSE cursor_i;
+        END
+        ');
     }
 
     public function down()
@@ -735,5 +788,6 @@ class CreateUserFillTrigger extends Migration
         /* 22 */ DB::unprepared('DROP TRIGGER `tr_fill_user_throwns`');
         /* 23 */ DB::unprepared('DROP TRIGGER `tr_fill_user_warframes`');
         /* 24 */ DB::unprepared('DROP TRIGGER `tr_fill_user_spearguns`');
+        /* 25 */ DB::unprepared('DROP TRIGGER `tr_fill_user_archguns`');
     }
 }

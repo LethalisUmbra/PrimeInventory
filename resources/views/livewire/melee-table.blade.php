@@ -16,7 +16,7 @@
             @forelse ($melees as $melee)
                 <input type="hidden" wire:model="id_melee.{{ $loop->index }}">
                 <tr>
-                    <th id="{{$melee->name}}%20Prime" scope="row" class="prime-item col-6 @if($melee->blueprint>=$melee->r_blueprint & $melee->blade>=$melee->r_blade & $melee->handle>=$melee->r_handle) text-success @else text-white @endif">{{ __($melee->name) }} Prime</th>
+                    <th id="{{ $melee->name }}%20Prime" scope="row" class="prime-item col-6 @if($melee->blueprint>=$melee->r_blueprint & $melee->blade>=$melee->r_blade & $melee->handle>=$melee->r_handle) text-success @else text-white @endif">{{ __($melee->name) }} Prime</th>
                     <td class="col-2 text-center">
                         <input min="0" onchange="document.getElementById('melee_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($melee->blueprint < $melee->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $melee->r_blueprint }}</p>

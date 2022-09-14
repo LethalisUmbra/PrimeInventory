@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserArchwing extends Model
+class UserArchgun extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
         'blueprint',
-        'harness',
-        'wings',
-        'systems',
+        'barrel',
+        'receiver',
+        'stock',
         'user_id',
-        'archwing_id',
+        'archgun_id',
     ];
 
     public function getRouteKeyName()
     {
-        return 'user_id'.'archwing_id';
+        return 'user_id'.'archgun_id';
     }
 
     public $timestamps = false; 

@@ -51,6 +51,7 @@ function getWikiUrl(item_id)
             itemData = data[1];
         }
         var item = document.getElementById(item_id);
+        console.log(itemData)
         item.setAttribute("onclick","window.open('"+itemData.wikiaUrl+"', '_blank')");
     });
 }
