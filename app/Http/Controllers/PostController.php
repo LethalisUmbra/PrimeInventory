@@ -44,18 +44,19 @@ class PostController extends Controller
         if ($request->hasFile('file')) {
 
             $request->validate([
-                'image' => 'mimes:jpeg,bmp,png'
+                'file' => 'mimes:jpeg,bmp,png'
             ]);
 
-            $name = $request->file->getClientOriginalName();
+            $file = $request->file;
+            $filename = date('Y_m_d_His').'_'.$file->getClientOriginalName();
+            $file->move(public_path('post'), $filename);
 
-            $request->file->storeAs('public/post/', $name);
 
             $post = new Post([
                 "title" => $request->get('title'),
                 "url" => Str::slug($request->get('title')),
                 "description" => $request->get('description'),
-                "image_path" => $name
+                "image_path" => $filename
             ]);
             $post->save();
         }

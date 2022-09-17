@@ -30,7 +30,7 @@
                 <div class="row bg-white my-4 p-3 mx-3 mx-sm-0 shadow-sm d-block d-sm-flex">
                     <div class="col-sm-5 my-auto p-0 mx-auto">
                         <a @if (Auth::user() and Auth::user()->is_admin) href="{{ route('post.show', $post) }}" @else href="https://warframe.com/news/{{ $post->url }}" target="_blank" @endif>
-                            <img src="storage/post/{{ $post->image_path }}" class="img-responsive w-100">
+                            <img src="{{ url('post/'.$post->image_path) }}" class="img-responsive w-100">
                         </a>
                     </div>
                     <div class="col-sm-7">

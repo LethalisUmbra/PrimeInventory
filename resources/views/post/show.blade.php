@@ -10,7 +10,7 @@
             <h1>{{ $post->title }}</h1>
 
             <a href="https://warframe.com/news/{{ $post->url }}" target="_blank">
-                <img src="../storage/post/{{ $post->image_path }}" class="img-responsive w-50">
+                <img src="{{ url('post/'.$post->image_path) }}" class="img-responsive w-50">
             </a>
 
             <p class="text-secondary">{{ $post->description }}</p>
