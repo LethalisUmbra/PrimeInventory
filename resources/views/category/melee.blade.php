@@ -61,61 +61,7 @@
 
     <div class="col-12 col-md-10 col-lg-8 col-xl-6 p-0" style="font-size: 12px;">
 
-        <input id="keyword" wire:model="keyword" type="text" placeholder="@lang('Seach Weapon')" style="margin:12px;" onkeyup="filter()"/>
-
-        <div class="row m-0 mb-3" id="melee">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('melee-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="fist">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('fist-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="staff">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('staff-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="hammer">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('hammer-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="glaive">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('glaive-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="sparring">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('sparring-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="nikana">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('nikana-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="nunchaku">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('nunchaku-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="sword_shield">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('sword-shield-table')
-            </div>
-        </div>
+        @livewire('melee-tables')
     </div>
 </div>
 
@@ -148,16 +94,6 @@
         {
             container.style.display = 'none';
         }
-    }
-
-    function filter(){
-        
-        var keyword = document.getElementById('keyword');
-        var melee = document.getElementById('melee');
-        
-        melee.value = keyword.value;
-
-        alert(melee.value);
     }
 </script>
 @endsection
