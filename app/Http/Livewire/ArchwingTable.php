@@ -8,59 +8,44 @@ use Auth;
 
 class ArchwingTable extends Component
 {
-    public $id_archwing = [];
-    public $name = [];
-    public $owned = [];
-    public $blueprint = [];
-    public $r_blueprint = [];
-    public $harness = [];
-    public $r_harness = [];
-    public $wings = [];
-    public $r_wings = [];
-    public $systems = [];
-    public $r_systems = [];
+    public $archwing;
+    public $filter;
 
+    protected $listeners = ['refresh'];
+    public function refresh($filter)
+    {
+        $this->filter = $filter;
+    }
 
     public function render()
     {
-        $archwing = DB::table('user_archwings as ur')
-                -> join('archwings as r', 'ur.archwing_id','=','r.id')
-                -> join('users as u', 'ur.user_id','=','u.id')
-                ->select('r.id as id', 'r.name as name', 'ur.owned as owned',
-                        'r.blueprint as r_blueprint', 'r.harness as r_harness', 'r.wings as r_wings', 'r.systems as r_systems',
-                        'ur.blueprint as blueprint', 'ur.harness as harness', 'ur.wings as wings', 'ur.systems as systems')
-                ->where('ur.user_id','=',Auth::user()->id)->get();
+        $this->archwing = DB::table('user_archwings as ua')
+                -> join('archwings as a', 'ua.archwing_id','=','a.id')
+                -> join('users as u', 'ua.user_id','=','u.id')
+                ->select('a.id as id', 'a.name as name', 'ua.owned as owned',
+                        'a.blueprint as r_blueprint', 'a.harness as r_harness', 'a.wings as r_wings', 'a.systems as r_systems',
+                        'ua.blueprint as blueprint', 'ua.harness as harness', 'ua.wings as wings', 'ua.systems as systems')
+                ->where([['ua.user_id','=',Auth::user()->id], ['a.name', 'LIKE', "%$this->filter%"]])
+                ->get();
 
-        for ($i = 0; $i < count($archwing); $i++)
-        {
-            $this->id_archwing[$i] = $archwing[$i]->id;
-            $this->name[$i] = $archwing[$i]->name;
-            $this->owned[$i] = $archwing[$i]->owned;
-            $this->blueprint[$i] = $archwing[$i]->blueprint;
-            $this->r_blueprint[$i] = $archwing[$i]->r_blueprint;
-            $this->harness[$i] = $archwing[$i]->harness;
-            $this->r_harness[$i] = $archwing[$i]->r_harness;
-            $this->wings[$i] = $archwing[$i]->wings;
-            $this->r_wings[$i] = $archwing[$i]->r_wings;
-            $this->systems[$i] = $archwing[$i]->systems;
-            $this->r_systems[$i] = $archwing[$i]->r_systems;
-        }
-
-        return view('livewire.archwing-table')->with([
-            'archwings' => $archwing
+        return view('livewire.archwing-table', [
+            'archwings' => $this->archwing,
+            'filter' => $this->filter
         ]);
     }
 
     public function update_user_archwing(){
-        for ($i = 0; $i < count($this->id_archwing); $i++)
-        {
-            $archwing = UserArchwing::where('archwing_id', $this->id_archwing[$i])->where('user_id', Auth::user()->id)->first();
-            $archwing->owned = $this->owned[$i];
-            $archwing->blueprint = (int)$this->blueprint[$i];
-            $archwing->harness = (int)$this->harness[$i];
-            $archwing->wings = (int)$this->wings[$i];
-            $archwing->systems = (int)$this->systems[$i];
-            $archwing->save();
+        foreach($this->archwing as $archwing) {
+            $_archwing = UserArchwing::firstWhere([
+                ['archwing_id', $archwing['id']],
+                ['user_id', Auth::user()->id]
+            ]);
+            $_archwing->owned = $archwing['owned'];
+            $_archwing->blueprint = (int)$archwing['blueprint'];
+            $_archwing->harness = (int)$archwing['harness'];
+            $_archwing->wings = (int)$archwing['wings'];
+            $_archwing->systems = (int)$archwing['systems'];
+            $_archwing->save();
         }
     }
 }

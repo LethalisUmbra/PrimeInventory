@@ -1,6 +1,8 @@
+<div>
+@if(count($throwns)>0)
 <form wire:submit.prevent="update_user_thrown">
     @csrf
-    <input id="thrown_btn" type="submit" class="d-none" value="@lang('Update')">
+    <input id="thrown_btn" type="submit" class="d-none">
     <table class="table table-dark table-hover mx-auto">
         <thead>
         <tr class="text-warning">
@@ -13,23 +15,23 @@
         </thead>
         <tbody>
             @forelse ($throwns as $thrown)
-                <input type="hidden" wire:model="id_thrown.{{ $loop->index }}">
+                <input type="hidden" wire:model="thrown.{{ $loop->index }}.id">
                 <tr>
                     <th id="{{$thrown->name}}%20Prime" scope="row" class="prime-item col-6 @if($thrown->blueprint>=$thrown->r_blueprint & $thrown->pouch>=$thrown->r_pouch & $thrown->blade>=$thrown->r_blade) text-success @else text-white @endif">{{ $thrown->name }} Prime</th>
                     <td class="col-2 text-center">
-                        <input min="0" onchange="document.getElementById('thrown_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($thrown->blueprint < $thrown->r_blueprint)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('thrown_btn').click();" type="number" wire:model.defer="thrown.{{$loop->index}}.blueprint" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($thrown->blueprint < $thrown->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $thrown->r_blueprint }}</p>
                     </td>
                     <td class="col-2 text-center">
-                        <input min="0" onchange="document.getElementById('thrown_btn').click();" type="number" wire:model.defer="pouch.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($thrown->pouch < $thrown->r_pouch)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('thrown_btn').click();" type="number" wire:model.defer="thrown.{{$loop->index}}.pouch" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($thrown->pouch < $thrown->r_pouch)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $thrown->r_pouch }}</p>
                     </td>
                     <td class="col-2 text-center">
-                        <input min="0" onchange="document.getElementById('thrown_btn').click();" type="number" wire:model.defer="blade.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($thrown->blade < $thrown->r_blade)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('thrown_btn').click();" type="number" wire:model.defer="thrown.{{$loop->index}}.blade" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($thrown->blade < $thrown->r_blade)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $thrown->r_blade }}</p>
                     </td>
                     <td class="col-2 text-center">
-                        <input onchange="document.getElementById('thrown_btn').click();" type="checkbox" wire:model.defer="owned.{{$loop->index}}" class="form-check-input fs-5 m-0 bg-transparent border border-{{ ($thrown->owned)?'success':'danger' }}" @if($thrown->owned) checked @endif>
+                        <input onchange="document.getElementById('thrown_btn').click();" type="checkbox" wire:model.defer="thrown.{{$loop->index}}.owned" class="form-check-input fs-5 m-0 bg-transparent border border-{{ ($thrown->owned)?'success':'danger' }}" @if($thrown->owned) checked @endif>
                     </td>
                 </tr>
             @empty
@@ -37,4 +39,5 @@
         </tbody>
     </table>
 </form>
-
+@endif
+</div>

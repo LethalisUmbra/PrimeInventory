@@ -40,37 +40,7 @@
     </div>
 
     <div class="col-12 col-md-10 col-lg-8 col-xl-6 p-0" style="font-size: 12px;">
-
-        <div class="row m-0 mb-3" id="rifle">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('rifle-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="shotgun">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('shotgun-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="bow">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('bow-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="crossbow">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('crossbow-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="speargun">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('speargun-table')
-            </div>
-        </div>
-
+        @livewire('primary-tables')
     </div>
 </div>
 

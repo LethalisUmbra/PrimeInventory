@@ -9,6 +9,8 @@ class UserBow extends Model
 {
     use HasFactory;
 
+    protected $table = 'user_bows as ub';
+
     protected $fillable = [
         'id',
         'blueprint',
@@ -25,5 +27,5 @@ class UserBow extends Model
         return 'user_id'.'bow_id';
     }
 
-    public $timestamps = false; 
+    public $timestamps = false;
 }

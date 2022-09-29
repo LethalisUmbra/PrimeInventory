@@ -6,6 +6,8 @@
 @include('partials.carousel')
 @endsection
 
+{{ $filter = ' ' }}
+
 @section('content')
 <div class="row d-flex justify-content-center mx-0 py-4">
     <div class="col-12 mb-3 col-md-2 px-md-0">
@@ -43,44 +45,7 @@
         </div>
     </div>
 
-    <div class="col-12 col-md-10 col-lg-8 col-xl-6 p-0" style="font-size: 12px;">
-        <div class="row m-0 mb-3" id="pistol">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('pistol-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="dual_pistol">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('dual-pistol-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="ak_weapon">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('ak-weapon-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="shotgun_sidearm">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('shotgun-sidearm-table')
-            </div>
-        </div>
-
-        <div class="row m-0 mb-3" id="thrown">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('thrown-table')
-            </div>
-        </div>
-
-
-        <div class="row m-0 mb-3" id="sec_crossbow">
-            <div class="mx-auto rounded table-responsive">
-                @livewire('sec-crossbow-table')
-            </div>
-        </div>
-    </div>
+    @livewire('secondary-tables')
 </div>
 
 @livewireScripts

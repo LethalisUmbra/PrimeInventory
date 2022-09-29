@@ -8,59 +8,44 @@ use Auth;
 
 class ArchgunTable extends Component
 {
-    public $id_archgun = [];
-    public $name = [];
-    public $owned = [];
-    public $blueprint = [];
-    public $r_blueprint = [];
-    public $barrel = [];
-    public $r_barrel = [];
-    public $receiver = [];
-    public $r_receiver = [];
-    public $stock = [];
-    public $r_stock = [];
+    public $archgun;
+    public $filter;
 
+    protected $listeners = ['refresh'];
+    public function refresh($filter)
+    {
+        $this->filter = $filter;
+    }
 
     public function render()
     {
-        $archguns = DB::table('user_archguns as uw')
-                -> join('archguns as w', 'uw.archguns_id','=','w.id')
-                -> join('users as u', 'uw.user_id','=','u.id')
-                ->select('w.id as id', 'w.name as name', 'uw.owned as owned',
-                        'w.blueprint as r_blueprint', 'w.barrel as r_barrel', 'w.receiver as r_receiver', 'w.stock as r_stock',
-                        'uw.blueprint as blueprint', 'uw.barrel as barrel', 'uw.receiver as receiver', 'uw.stock as stock')
-                ->where('uw.user_id','=',Auth::user()->id)->get();
-
-        for ($i = 0; $i < count($archguns); $i++)
-        {
-            $this->id_archgun[$i] = $archguns[$i]->id;
-            $this->name[$i] = $archguns[$i]->name;
-            $this->owned[$i] = $archguns[$i]->owned;
-            $this->blueprint[$i] = $archguns[$i]->blueprint;
-            $this->r_blueprint[$i] = $archguns[$i]->r_blueprint;
-            $this->barrel[$i] = $archguns[$i]->barrel;
-            $this->r_barrel[$i] = $archguns[$i]->r_barrel;
-            $this->receiver[$i] = $archguns[$i]->receiver;
-            $this->r_receiver[$i] = $archguns[$i]->r_receiver;
-            $this->stock[$i] = $archguns[$i]->stock;
-            $this->r_stock[$i] = $archguns[$i]->r_stock;
-        }
+        $this->archgun = DB::table('user_archguns as ua')
+                -> join('archguns as a', 'ua.archgun_id','=','a.id')
+                -> join('users as u', 'ua.user_id','=','u.id')
+                ->select('a.id as id', 'a.name as name', 'ua.owned as owned',
+                        'a.blueprint as r_blueprint', 'a.barrel as r_barrel', 'a.receiver as r_receiver', 'a.stock as r_stock',
+                        'ua.blueprint as blueprint', 'ua.barrel as barrel', 'ua.receiver as receiver', 'ua.stock as stock')
+                ->where([['ua.user_id','=',Auth::user()->id], ['a.name', 'LIKE', "%$this->filter%"]])
+                ->get();
 
         return view('livewire.archgun-table')->with([
-            'archguns' => $archguns
+            'archguns' => $this->archgun,
+            'filter' => $this->filter
         ]);
     }
 
     public function update_user_archgun(){
-        for ($i = 0; $i < count($this->id_archgun); $i++)
-        {
-            $archgun = UserArchgun::where('archgun_id', $this->id_archgun[$i])->where('user_id', Auth::user()->id)->first();
-            $archgun->owned = $this->owned[$i];
-            $archgun->blueprint = (int)$this->blueprint[$i];
-            $archgun->barrel = (int)$this->barrel[$i];
-            $archgun->receiver = (int)$this->receiver[$i];
-            $archgun->stock = (int)$this->stock[$i];
-            $archgun->save();
+        foreach($this->archgun as $archgun) {
+            $_archgun = UserArchgun::firstWhere([
+                ['archgun_id', $archgun['id']],
+                ['user_id', Auth::user()->id]
+            ]);
+            $_archgun->owned = $archgun['owned'];
+            $_archgun->blueprint = (int)$archgun['blueprint'];
+            $_archgun->barrel = (int)$archgun['barrel'];
+            $_archgun->receiver = (int)$archgun['receiver'];
+            $_archgun->stock = (int)$archgun['stock'];
+            $_archgun->save();
         }
     }
 }

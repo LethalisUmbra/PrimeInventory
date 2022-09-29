@@ -198,7 +198,7 @@ class CreateUserFillTrigger extends Migration
 
             SET v_index = 1;
 
-            SELECT count(*) INTO v_counter FROM thrown;
+            SELECT count(*) INTO v_counter FROM throwns;
             WHILE v_index <= v_counter DO
                 INSERT INTO user_throwns (user_id, thrown_id) VALUES (NEW.id, v_index);
                 SET v_index = v_index + 1;
@@ -206,7 +206,7 @@ class CreateUserFillTrigger extends Migration
 
             SET v_index = 1;
 
-            SELECT count(*) INTO v_counter FROM warframe;
+            SELECT count(*) INTO v_counter FROM warframes;
             WHILE v_index <= v_counter DO
                 INSERT INTO user_warframes (user_id, warframe_id) VALUES (NEW.id, v_index);
                 SET v_index = v_index + 1;
@@ -214,7 +214,7 @@ class CreateUserFillTrigger extends Migration
 
             SET v_index = 1;
 
-            SELECT count(*) INTO v_counter FROM speargun;
+            SELECT count(*) INTO v_counter FROM spearguns;
             WHILE v_index <= v_counter DO
                 INSERT INTO user_spearguns (user_id, speargun_id) VALUES (NEW.id, v_index);
                 SET v_index = v_index + 1;
@@ -222,9 +222,9 @@ class CreateUserFillTrigger extends Migration
 
             SET v_index = 1;
 
-            SELECT count(*) INTO v_counter FROM archgun;
+            SELECT count(*) INTO v_counter FROM archguns;
             WHILE v_index <= v_counter DO
-                INSERT INTO user_archguns (user_id, archguns_id) VALUES (NEW.id, v_index);
+                INSERT INTO user_archguns (user_id, archgun_id) VALUES (NEW.id, v_index);
                 SET v_index = v_index + 1;
             END WHILE;
         END
@@ -754,7 +754,7 @@ class CreateUserFillTrigger extends Migration
                 IF done THEN
                     LEAVE insert_loop;
                 END IF;
-                INSERT INTO user_archguns (user_id, archguns_id) VALUES (c_user_id, NEW.id);
+                INSERT INTO user_archguns (user_id, archgun_id) VALUES (c_user_id, NEW.id);
             END LOOP;
             CLOSE cursor_i;
         END

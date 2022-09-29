@@ -36,7 +36,7 @@
           <ul class="d-flex navbar-nav mb-2 mb-lg-0">
             <!-- Locale Form -->
             <li class="nav-item dropdown mx-2">
-              <form method="POST" action="{{ route('changelocale') }}" class="navbar-select">
+              <form method="POST" action="{{ route('changeLocale') }}" class="navbar-select">
                 @csrf
                 <select id="locale" name="locale" class="px-1 nav-link dropdown-toggle bg-transparent border-0 rounded" required onchange="this.form.submit()">
                   <option class="dropdown-item" value="es" @if(\App::getLocale()=='es') selected="selected" @endif>@lang('Spanish')</option>

@@ -60,7 +60,6 @@
     </div>
 
     <div class="col-12 col-md-10 col-lg-8 col-xl-6 p-0" style="font-size: 12px;">
-
         @livewire('melee-tables')
     </div>
 </div>

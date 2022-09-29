@@ -1,3 +1,5 @@
+<div>
+@if(count($staffs)>0)
 <form wire:submit.prevent="update_user_staff">
     @csrf
     <input id="staff_btn" type="submit" class="d-none" value="@lang('Update')">
@@ -17,19 +19,19 @@
                 <tr>
                     <th id="{{$staff->name}}%20Prime" scope="row" class="prime-item col-6 @if($staff->blueprint>=$staff->r_blueprint & $staff->ornament>=$staff->r_ornament & $staff->handle>=$staff->r_handle) text-success @else text-white @endif">{{ $staff->name }} Prime</th>
                     <td class="col-2 text-center">
-                        <input min="0" onchange="document.getElementById('staff_btn').click();" type="number" wire:model.defer="blueprint.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($staff->blueprint < $staff->r_blueprint)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('staff_btn').click();" type="number" wire:model.defer="staff.{{$loop->index}}.blueprint" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($staff->blueprint < $staff->r_blueprint)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $staff->r_blueprint }}</p>
                     </td>
                     <td class="col-2 text-center">
-                        <input min="0" onchange="document.getElementById('staff_btn').click();" type="number" wire:model.defer="ornament.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($staff->ornament < $staff->r_ornament)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('staff_btn').click();" type="number" wire:model.defer="staff.{{$loop->index}}.ornament" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($staff->ornament < $staff->r_ornament)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $staff->r_ornament }}</p>
                     </td>
                     <td class="col-2 text-center">
-                        <input min="0" onchange="document.getElementById('staff_btn').click();" type="number" wire:model.defer="handle.{{$loop->index}}" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($staff->handle < $staff->r_handle)?"danger":"success" }}">
+                        <input min="0" onchange="document.getElementById('staff_btn').click();" type="number" wire:model.defer="staff.{{$loop->index}}.handle" style="width:20px" class="d-inline rounded bg-transparent text-white text-end pe-1 shadow-none border border-{{ ($staff->handle < $staff->r_handle)?"danger":"success" }}">
                         <p class="d-none d-sm-inline">/ {{ $staff->r_handle }}</p>
                     </td>
                     <td class="col-2 text-center">
-                        <input onchange="document.getElementById('staff_btn').click();" type="checkbox" wire:model.defer="owned.{{$loop->index}}" class="form-check-input fs-5 m-0 bg-transparent border border-{{ ($staff->owned)?'success':'danger' }}" @if($staff->owned) checked @endif>
+                        <input onchange="document.getElementById('staff_btn').click();" type="checkbox" wire:model.defer="staff.{{$loop->index}}.owned" class="form-check-input fs-5 m-0 bg-transparent border border-{{ ($staff->owned)?'success':'danger' }}" @if($staff->owned) checked @endif>
                     </td>
                 </tr>
             @empty
@@ -37,4 +39,5 @@
         </tbody>
     </table>
 </form>
-
+@endif
+</div>

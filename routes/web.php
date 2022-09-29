@@ -19,7 +19,7 @@ Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
 Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
 
 // Locale
-Route::post('changelocale', [TranslationController::class, 'changeLocale'])->name('changelocale');
+Route::post('changelocale', [TranslationController::class, 'changeLocale'])->name('changeLocale');
 
 // Sections
 Route::view('/primary', 'category.primary')->name('primary')->middleware('auth');

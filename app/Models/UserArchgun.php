@@ -24,5 +24,5 @@ class UserArchgun extends Model
         return 'user_id'.'archgun_id';
     }
 
-    public $timestamps = false; 
+    public $timestamps = false;
 }

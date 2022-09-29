@@ -15,7 +15,7 @@ class CreateUserArchgunsTable extends Migration
             $table->integer('receiver')->default(0);
             $table->integer('stock')->default(0);
             $table->boolean('owned')->default(false);
-            $table->foreignId('archguns_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('archgun_id')->constrained('archguns')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });

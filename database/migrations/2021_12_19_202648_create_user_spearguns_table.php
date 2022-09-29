@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class CreateUserSpeargunsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('user_spearguns', function (Blueprint $table) {
@@ -26,11 +21,6 @@ class CreateUserSpeargunsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('user_spearguns');

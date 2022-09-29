@@ -1,44 +1,19 @@
 <div class="container">
-  <div class="row w-100 py-3 mx-0 mt-2">
-    <div class="col">
-      <div class="mb-2 row text-dark"><strong>WARFRAME</strong></div>
-      <ul class="list-group">
-        <li style="list-style-type: none;"><a href="https://www.warframe.com/game" target="_blank" class="text-muted text-decoration-none">@lang('Game')</a></li>
-        <li style="list-style-type: none;"><a href="https://www.youtube.com/user/playwarframe" target="_blank" class="text-muted text-decoration-none">@lang('Videos')</a></li>
-        <li style="list-style-type: none;"><a href="{{ route('home') }}" class="text-muted text-decoration-none">@lang('News')</a></li>
-      </ul>
-    </div>
-  
-    <div class="col">
-      <div class="mb-2 row text-dark"><strong>@lang('ACCOUNT')</strong></div>
-      <ul class="list-group">
-        <li style="list-style-type: none;"><a href="{{ route('login') }}" class="text-muted text-decoration-none">@lang('Login')</a></li>
-        <li style="list-style-type: none;"><a href="{{ route('register') }}" class="text-muted text-decoration-none">@lang('Sign Up')</a></li>
-        <li style="list-style-type: none;"><a href="#" class="text-muted text-decoration-none">@lang('Forgot Password')</a></li>
-      </ul>
-    </div>
-  
-    <div class="col">
-      <div class="mb-2 row text-dark"><strong>@lang('COMMUNITY')</strong></div>
-      <ul class="list-group">
-        <li style="list-style-type: none;"><a target="_blank" href="http://forums.warframe.com/" class="text-muted text-decoration-none">@lang('Forums')</a></li>
-        <li style="list-style-type: none;"><a target="_blank" href="http://warframe.wikia.com/wiki/WARFRAME_Wiki" class="text-muted text-decoration-none">@lang('Warframe Wikia')</a></li>
-        <li style="list-style-type: none;"><a target="_blank" href="https://warframe.market" class="text-muted text-decoration-none">@lang('Market')</a></li>
-
-      </ul>
-    </div>
-  
-    <div class="col">
-      <div class="mb-2 row text-dark"><strong>@lang('SUPPORT')</strong></div>
-      <ul class="list-group">
-        <li style="list-style-type: none;"><a target="_blank" href="https://www.warframe.com/faq" class="text-muted text-decoration-none">@lang('FAQ')</a></li>
-        <li style="list-style-type: none;"><a target="_blank" href="https://www.warframe.com/zendesk" class="text-muted text-decoration-none">@lang('Support')</a></li>
-        <li style="list-style-type: none;"><a target="_blank" href="https://www.warframe.com/terms" class="text-muted text-decoration-none">@lang('Terms of Use')</a></li>
-        <li style="list-style-type: none;"><a target="_blank" href="https://www.warframe.com/privacy" class="text-muted text-decoration-none">@lang('Privacy Policy')</a></li>
-        <li style="list-style-type: none;"><a target="_blank" href="https://www.warframe.com/eula" class="text-muted text-decoration-none">@lang('EULA')</a></li>
-      </ul>
+  <div class="row p-3 text-center">
+        <div class="col text-center" style="height: 60px;"><a href="{{ route('home') }}" class="text-decoration-none text-dark h5"><img src="/img/wf.png" class="h-100 w-auto"></a></div>
+        <div class="col d-flex align-items-center justify-content-center"><a target="_blank" href="https://www.warframe.com/es/zendesk" class="text-decoration-none text-dark"><h5>@lang('Support')</h5></a></div>
+        <div class="col d-flex align-items-center justify-content-center"><a target="_blank" href="https://www.digitalextremes.com/" class="text-decoration-none text-dark"><h5>@lang('Press')</h5></a></div>
+        <div class="col d-flex align-items-center justify-content-center"><a target="_blank" href="https://www.warframe.com/es/terms" class="text-decoration-none text-dark"><h5>@lang('Terms of Use')</h5></a></div>
+        <div class="col d-flex align-items-center justify-content-center"><a target="_blank" href="https://www.warframe.com/es/privacy" class="text-decoration-none text-dark"><h5>@lang('Privacy Policy')</h5></a></div>
+        <div class="col d-flex align-items-center justify-content-center"><a target="_blank" href="https://www.warframe.com/es/eula" class="text-decoration-none text-dark"><h5>@lang('EULA')</h5></a></div>
+  </div>
+</div>
+<div class="text-center">
+  <div class="container">
+    <div class="row p-3">
+      <div class="col">
+        ©2022 Prime Inventory. All rights reserved.
+      </div>
     </div>
   </div>
 </div>
-
-<div class="w-100" style="height: 5px; background-color: red"></div>
