@@ -11,6 +11,6 @@ class SecondaryTables extends Component
     public function render()
     {
         $this->emit('refresh', $this->filter);
-        return view('livewire.secondary-tables');
+        return view('livewire.secondary.index');
     }
 }

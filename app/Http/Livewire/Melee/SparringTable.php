@@ -20,13 +20,13 @@ class SparringTable extends Component
     public function render()
     {
         $this->sparring = DB::table('user_sparrings as us')
-                ->join('sparrings as s', 'us.sparring_id','=','s.id')
-                ->join('users as u', 'us.user_id','=','u.id')
-                ->select('s.id as id', 's.name as name', 'us.owned as owned',
-                        's.blueprint as r_blueprint', 's.gauntlet as r_gauntlet', 's.boot as r_boot',
-                        'us.blueprint as blueprint', 'us.gauntlet as gauntlet', 'us.boot as boot')
-                ->where([['us.user_id','=',Auth::user()->id], ['s.name', 'LIKE', "%$this->filter%"]])
-                ->get();
+            ->join('sparrings as s', 'us.sparring_id','=','s.id')
+            ->join('users as u', 'us.user_id','=','u.id')
+            ->select('s.id as id', 's.name as name', 'us.owned as owned',
+                    's.blueprint as r_blueprint', 's.gauntlet as r_gauntlet', 's.boot as r_boot',
+                    'us.blueprint as blueprint', 'us.gauntlet as gauntlet', 'us.boot as boot')
+            ->where([['user_id','=',Auth::user()->id], ['s.name', 'LIKE', "%$this->filter%"]])
+            ->get();
 
         return view('livewire.melee.sparring-table', [
             'sparrings' => $this->sparring,

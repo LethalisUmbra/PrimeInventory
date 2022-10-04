@@ -25,7 +25,7 @@ class ThrownTable extends Component
                 ->select('t.id as id', 't.name as name', 'ut.owned as owned',
                         't.blueprint as r_blueprint', 't.pouch as r_pouch', 't.blade as r_blade',
                         'ut.blueprint as blueprint', 'ut.pouch as pouch', 'ut.blade as blade')
-                ->where([['ut.user_id','=',Auth::user()->id], ['t.name', 'LIKE', "%$this->filter%"]])
+                ->where([['user_id','=',Auth::user()->id], ['t.name', 'LIKE', "%$this->filter%"]])
                 ->get();
 
         return view('livewire.secondary.thrown-table', [

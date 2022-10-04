@@ -19,13 +19,13 @@ class ShotgunSidearmTable extends Component
 
     public function render()
     {
-        $this->shotgun_sidearm = DB::table('user_shotgun_sidearms as ub')
-                -> join('shotgun_sidearms as b', 'ub.shotgun_sidearm_id','=','b.id')
-                -> join('users as u', 'ub.user_id','=','u.id')
-                ->select('b.id as id', 'b.name as name', 'ub.owned as owned',
-                        'b.blueprint as r_blueprint', 'b.barrel as r_barrel', 'b.receiver as r_receiver',
-                        'ub.blueprint as blueprint', 'ub.barrel as barrel', 'ub.receiver as receiver')
-                ->where([['ub.user_id','=',Auth::user()->id], ['b.name', 'LIKE', "%$this->filter%"]])
+        $this->shotgun_sidearm = DB::table('user_shotgun_sidearms as uss')
+                -> join('shotgun_sidearms as ss', 'uss.shotgun_sidearm_id','=','ss.id')
+                -> join('users as u', 'uss.user_id','=','u.id')
+                ->select('ss.id as id', 'ss.name as name', 'uss.owned as owned',
+                        'ss.blueprint as r_blueprint', 'ss.barrel as r_barrel', 'ss.receiver as r_receiver',
+                        'uss.blueprint as blueprint', 'uss.barrel as barrel', 'uss.receiver as receiver')
+                ->where([['user_id','=',Auth::user()->id], ['ss.name', 'LIKE', "%$this->filter%"]])
                 ->get();
 
         return view('livewire.secondary.shotgun_sidearm-table', [

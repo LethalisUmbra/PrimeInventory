@@ -25,7 +25,7 @@ class DualPistolTable extends Component
                 ->select('dp.id as id', 'dp.name as name', 'udp.owned as owned',
                         'dp.blueprint as r_blueprint', 'dp.barrel as r_barrel', 'dp.receiver as r_receiver', 'dp.link as r_link',
                         'udp.blueprint as blueprint', 'udp.barrel as barrel', 'udp.receiver as receiver', 'udp.link as link')
-                ->where([['udp.user_id','=',Auth::user()->id], ['dp.name', 'LIKE', "%$this->filter%"]])
+                ->where([['user_id','=',Auth::user()->id], ['dp.name', 'LIKE', "%$this->filter%"]])
                 ->get();
 
         return view('livewire.secondary.dual_pistol-table', [

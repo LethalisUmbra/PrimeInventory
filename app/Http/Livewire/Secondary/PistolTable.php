@@ -25,7 +25,7 @@ class PistolTable extends Component
                 ->select('p.id as id', 'p.name as name', 'up.owned as owned',
                         'p.blueprint as r_blueprint', 'p.barrel as r_barrel', 'p.receiver as r_receiver',
                         'up.blueprint as blueprint', 'up.barrel as barrel', 'up.receiver as receiver')
-                ->where([['up.user_id','=',Auth::user()->id], ['p.name', 'LIKE', "%$this->filter%"]])
+                ->where([['user_id','=',Auth::user()->id], ['p.name', 'LIKE', "%$this->filter%"]])
                 ->get();
 
         return view('livewire.secondary.pistol-table', [

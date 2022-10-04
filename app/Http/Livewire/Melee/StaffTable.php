@@ -20,13 +20,13 @@ class StaffTable extends Component
     public function render()
     {
         $this->staff = DB::table('user_staffs as us')
-                ->join('staffs as s', 'us.staff_id','=','s.id')
-                ->join('users as u', 'us.user_id','=','u.id')
-                ->select('s.id as id', 's.name as name', 'us.owned as owned',
-                        's.blueprint as r_blueprint', 's.ornament as r_ornament', 's.handle as r_handle',
-                        'us.blueprint as blueprint', 'us.ornament as ornament', 'us.handle as handle')
-                ->where([['us.user_id','=',Auth::user()->id], ['s.name', 'LIKE', "%$this->filter%"]])
-                ->get();
+            ->join('staffs as s', 'us.staff_id','=','s.id')
+            ->join('users as u', 'us.user_id','=','u.id')
+            ->select('s.id as id', 's.name as name', 'us.owned as owned',
+                    's.blueprint as r_blueprint', 's.ornament as r_ornament', 's.handle as r_handle',
+                    'us.blueprint as blueprint', 'us.ornament as ornament', 'us.handle as handle')
+            ->where([['user_id','=',Auth::user()->id], ['s.name', 'LIKE', "%$this->filter%"]])
+            ->get();
 
         return view('livewire.melee.staff-table', [
             'staffs' => $this->staff,

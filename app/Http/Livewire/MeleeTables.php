@@ -11,6 +11,6 @@ class MeleeTables extends Component
     public function render()
     {
         $this->emit('refresh', $this->filter);
-        return view('livewire.melee-tables');
+        return view('livewire.melee.index');
     }
 }

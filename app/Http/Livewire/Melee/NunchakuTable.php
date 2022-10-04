@@ -20,13 +20,13 @@ class NunchakuTable extends Component
     public function render()
     {
         $this->nunchaku = DB::table('user_nunchakus as un')
-        -> join('nunchakus as n', 'un.nunchaku_id','=','n.id')
-        -> join('users as u', 'un.user_id','=','u.id')
-        ->select('n.id as id', 'n.name as name', 'un.owned as owned',
-                'n.blueprint as r_blueprint', 'n.handle as r_handle', 'n.chain as r_chain',
-                'un.blueprint as blueprint', 'un.handle as handle', 'un.chain as chain')
-                ->where([['un.user_id','=',Auth::user()->id], ['n.name', 'LIKE', "%$this->filter%"]])
-                ->get();
+            ->join('nunchakus as n', 'un.nunchaku_id','=','n.id')
+            ->join('users as u', 'un.user_id','=','u.id')
+            ->select('n.id as id', 'n.name as name', 'un.owned as owned',
+                    'n.blueprint as r_blueprint', 'n.handle as r_handle', 'n.chain as r_chain',
+                    'un.blueprint as blueprint', 'un.handle as handle', 'un.chain as chain')
+            ->where([['user_id','=',Auth::user()->id], ['n.name', 'LIKE', "%$this->filter%"]])
+            ->get();
 
         return view('livewire.melee.nunchaku-table', [
             'nunchakus' => $this->nunchaku,

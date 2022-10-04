@@ -19,13 +19,13 @@ class SecCrossbowTable extends Component
 
     public function render()
     {
-        $this->sec_crossbow = DB::table('user_sec_crossbows as ub')
-                -> join('sec_crossbows as b', 'ub.sec_crossbow_id','=','b.id')
-                -> join('users as u', 'ub.user_id','=','u.id')
-                ->select('b.id as id', 'b.name as name', 'ub.owned as owned',
-                        'b.blueprint as r_blueprint', 'b.upper_limb as r_upper_limb', 'b.lower_limb as r_lower_limb', 'b.receiver as r_receiver', 'b.string as r_string',
-                        'ub.blueprint as blueprint', 'ub.upper_limb as upper_limb', 'ub.lower_limb as lower_limb', 'ub.receiver as receiver', 'ub.string as string')
-                ->where([['ub.user_id','=',Auth::user()->id], ['b.name', 'LIKE', "%$this->filter%"]])
+        $this->sec_crossbow = DB::table('user_sec_crossbows as usc')
+                -> join('sec_crossbows as sc', 'usc.sec_crossbow_id','=','sc.id')
+                -> join('users as u', 'usc.user_id','=','u.id')
+                ->select('sc.id as id', 'sc.name as name', 'usc.owned as owned',
+                        'sc.blueprint as r_blueprint', 'sc.upper_limb as r_upper_limb', 'sc.lower_limb as r_lower_limb', 'sc.receiver as r_receiver', 'sc.string as r_string',
+                        'usc.blueprint as blueprint', 'usc.upper_limb as upper_limb', 'usc.lower_limb as lower_limb', 'usc.receiver as receiver', 'usc.string as string')
+                ->where([['user_id','=',Auth::user()->id], ['sc.name', 'LIKE', "%$this->filter%"]])
                 ->get();
 
         return view('livewire.secondary.sec_crossbow-table', [

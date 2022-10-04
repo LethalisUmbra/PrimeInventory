@@ -20,13 +20,13 @@ class HammerTable extends Component
     public function render()
     {
         $this->hammer = DB::table('user_hammers as uh')
-                ->join('hammers as h', 'uh.hammer_id','=','h.id')
-                ->join('users as u', 'uh.user_id','=','u.id')
-                ->select('h.id as id', 'h.name as name', 'uh.owned as owned',
-                        'h.blueprint as r_blueprint', 'h.head as r_head', 'h.handle as r_handle',
-                        'uh.blueprint as blueprint', 'uh.head as head', 'uh.handle as handle')
-                ->where([['uh.user_id','=',Auth::user()->id], ['h.name', 'LIKE', "%$this->filter%"]])
-                ->get();
+            ->join('hammers as h', 'uh.hammer_id','=','h.id')
+            ->join('users as u', 'uh.user_id','=','u.id')
+            ->select('h.id as id', 'h.name as name', 'uh.owned as owned',
+                    'h.blueprint as r_blueprint', 'h.head as r_head', 'h.handle as r_handle',
+                    'uh.blueprint as blueprint', 'uh.head as head', 'uh.handle as handle')
+            ->where([['user_id','=',Auth::user()->id], ['h.name', 'LIKE', "%$this->filter%"]])
+            ->get();
 
         return view('livewire.melee.hammer-table', [
             'hammers' => $this->hammer,

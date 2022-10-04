@@ -25,7 +25,7 @@ class AkWeaponTable extends Component
                 ->select('aw.id as id', 'aw.name as name', 'uaw.owned as owned',
                         'aw.blueprint as r_blueprint', 'aw.single_weapon as r_single_weapon', 'aw.link as r_link',
                         'uaw.blueprint as blueprint', 'uaw.single_weapon as single_weapon', 'uaw.link as link',)
-                ->where([['uaw.user_id','=',Auth::user()->id], ['aw.name', 'LIKE', "%$this->filter%"]])
+                ->where([['user_id','=',Auth::user()->id], ['aw.name', 'LIKE', "%$this->filter%"]])
                 ->get();
 
         return view('livewire.secondary.ak_weapon-table', [

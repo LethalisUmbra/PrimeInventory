@@ -20,13 +20,13 @@ class SwordshieldTable extends Component
     public function render()
     {
         $this->swordshield = DB::table('user_sword_shields as uss')
-        -> join('sword_shields as ss', 'uss.sword_shield_id','=','ss.id')
-        -> join('users as u', 'uss.user_id','=','u.id')
-        ->select('ss.id as id', 'ss.name as name', 'uss.owned as owned',
-                'ss.blueprint as r_blueprint', 'ss.blade as r_blade', 'ss.guard as r_guard', 'ss.hilt as r_hilt',
-                'uss.blueprint as blueprint', 'uss.blade as blade', 'uss.guard as guard', 'uss.hilt as hilt')
-                ->where([['uss.user_id','=',Auth::user()->id], ['ss.name', 'LIKE', "%$this->filter%"]])
-                ->get();
+            ->join('sword_shields as ss', 'uss.sword_shield_id','=','ss.id')
+            ->join('users as u', 'uss.user_id','=','u.id')
+            ->select('ss.id as id', 'ss.name as name', 'uss.owned as owned',
+                    'ss.blueprint as r_blueprint', 'ss.blade as r_blade', 'ss.guard as r_guard', 'ss.hilt as r_hilt',
+                    'uss.blueprint as blueprint', 'uss.blade as blade', 'uss.guard as guard', 'uss.hilt as hilt')
+            ->where([['user_id','=',Auth::user()->id], ['ss.name', 'LIKE', "%$this->filter%"]])
+            ->get();
 
         return view('livewire.melee.swordshield-table', [
             'swordshields' => $this->swordshield,
