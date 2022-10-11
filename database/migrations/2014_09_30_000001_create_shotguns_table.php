@@ -30,6 +30,9 @@ class CreateShotgunsTable extends Migration
             [   
                 'name' => 'Corinth',
             ],
+            [
+                'name' => 'Phantasma',
+            ],
             [   
                 'name' => 'Strun',
             ],

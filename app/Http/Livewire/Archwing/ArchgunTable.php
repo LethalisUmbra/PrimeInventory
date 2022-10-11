@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Archwing;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +28,7 @@ class ArchgunTable extends Component
                 ->where([['ua.user_id','=',Auth::user()->id], ['a.name', 'LIKE', "%$this->filter%"]])
                 ->get();
 
-        return view('livewire.archgun-table')->with([
+        return view('livewire.archwing.archgun-table')->with([
             'archguns' => $this->archgun,
             'filter' => $this->filter
         ]);

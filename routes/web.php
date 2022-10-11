@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WeaponController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TranslationController;
+use App\Http\Controllers\SearchController;
 
 // Home
 Route::get('/', [PostController::class, 'index'])->name('home');
@@ -21,6 +21,9 @@ Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edi
 // Locale
 Route::post('changelocale', [TranslationController::class, 'changeLocale'])->name('changeLocale');
 
+// Search
+Route::get('/search', [SearchController::class, 'index'])->name('search')->middleware('auth');
+
 // Sections
 Route::view('/primary', 'category.primary')->name('primary')->middleware('auth');
 Route::view('/secondary', 'category.secondary')->name('secondary')->middleware('auth');
@@ -28,10 +31,9 @@ Route::view('/melee', 'category.melee')->name('melee')->middleware('auth');
 Route::view('/warframe', 'category.warframe')->name('warframe')->middleware('auth');
 Route::view('/companion', 'category.companion')->name('companion')->middleware('auth');
 Route::view('/archwing', 'category.archwing')->name('archwing')->middleware('auth');
-Route::view('/archgun', 'category.archgun')->name('archgun')->middleware('auth');
 
 // Posts
-Route::resource('/post', PostController::class)
+Route::resource('/posts', PostController::class)
 ->names('post');
 
 // Auth

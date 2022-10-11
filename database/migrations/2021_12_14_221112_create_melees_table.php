@@ -95,6 +95,11 @@ class CreateMeleesTable extends Migration
                 'blade' => 1,
                 'handle' => 1,
             ],
+            [   
+                'name' => 'Tatsu',
+                'blade' => 1,
+                'handle' => 1,
+            ],
         ]);
     }
 

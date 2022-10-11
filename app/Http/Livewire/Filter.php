@@ -4,13 +4,16 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class PrimaryTables extends Component
+class Filter extends Component
 {
     public $filter;
+    public $category;
 
     public function render()
     {
         $this->emit('refresh', $this->filter);
-        return view('livewire.primary.index');
+        $category = strtolower($this->category);
+
+        return view('livewire.filter');
     }
 }

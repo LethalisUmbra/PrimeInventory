@@ -6,8 +6,6 @@
 @include('partials.carousel')
 @endsection
 
-{{ $filter = ' ' }}
-
 @section('content')
 <div class="row d-flex justify-content-center mx-0 py-4">
     <div class="col-12 mb-3 col-md-2 px-md-0">
@@ -45,7 +43,7 @@
         </div>
     </div>
 
-    @livewire('secondary-tables')
+    @livewire('filter', ['category' => 'secondary'])
 </div>
 
 @livewireScripts

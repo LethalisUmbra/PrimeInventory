@@ -100,6 +100,9 @@ class CreateWarframesTable extends Migration
                 'name' => 'Octavia',
             ],
             [
+                'name' => 'Revenant',
+            ],
+            [
                 'name' => 'Rhino',
             ],
             [

@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Archwing;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
@@ -25,10 +25,10 @@ class ArchwingTable extends Component
                 ->select('a.id as id', 'a.name as name', 'ua.owned as owned',
                         'a.blueprint as r_blueprint', 'a.harness as r_harness', 'a.wings as r_wings', 'a.systems as r_systems',
                         'ua.blueprint as blueprint', 'ua.harness as harness', 'ua.wings as wings', 'ua.systems as systems')
-                ->where([['ua.user_id','=',Auth::user()->id], ['a.name', 'LIKE', "%$this->filter%"]])
+                ->where([['user_id','=',Auth::user()->id], ['a.name', 'LIKE', "%$this->filter%"]])
                 ->get();
 
-        return view('livewire.archwing-table', [
+        return view('livewire.archwing.archwing-table', [
             'archwings' => $this->archwing,
             'filter' => $this->filter
         ]);

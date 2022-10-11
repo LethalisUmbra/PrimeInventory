@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="row d-flex justify-content-center mx-0 py-4">
-    <div class="col-12 mb-3 col-md-2 px-md-0">
+    <div class="col-12 my-3 col-md-2 px-md-0">
         <div class="bg-white py-3 px-4 rounded shadow border">
             <h5>@lang('Categories')</h5>
 
@@ -39,9 +39,7 @@
         </div>
     </div>
 
-    <div class="col-12 col-md-10 col-lg-8 col-xl-6 p-0" style="font-size: 12px;">
-        @livewire('primary-tables')
-    </div>
+    @livewire('filter', ['category' => 'primary'])
 </div>
 
 @livewireScripts

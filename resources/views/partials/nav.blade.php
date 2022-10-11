@@ -15,11 +15,10 @@
               <a class="nav-link dropdown-toggle {{ setActive('primary') }} {{ setActive('secondary') }} {{ setActive('melee') }}" href="#" id="navbarDropdownWeapons" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @lang('Weapons')
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownWeapons">
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownWeapons">
                 <li><a class="dropdown-item" href="{{ route('primary') }}">@lang('Primaries')</a></li>
                 <li><a class="dropdown-item" href="{{ route('secondary') }}">@lang('Secondaries')</a></li>
                 <li><a class="dropdown-item" href="{{ route('melee') }}">@lang('Melees')</a></li>
-                <li><a class="dropdown-item" href="{{ route('archgun') }}">@lang('Archguns')</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -34,6 +33,10 @@
           </ul>
 
           <ul class="d-flex navbar-nav mb-2 mb-lg-0">
+            <form class="d-flex me-3" action="{{ route('search') }}">
+              <input class="form-control rounded-0 rounded-start" type="search" placeholder="@lang('Search')" aria-label="Search" name="filter">
+              <button class="btn btn-outline-warning rounded-0 rounded-end" type="submit">@lang('Search')</button>
+            </form>
             <!-- Locale Form -->
             <li class="nav-item dropdown mx-2">
               <form method="POST" action="{{ route('changeLocale') }}" class="navbar-select">
@@ -54,7 +57,7 @@
                 <a class="nav-link dropdown-toggle {{setActive('user.*')}}" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {{ Auth::user()->name }}
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                   <li><a class="dropdown-item" href="{{ route('user.show', Auth::user()) }}">@lang('Profile')</a></li>
                   @if (Auth::user()->is_admin)<li><a class="dropdown-item" href="{{ route('user.index') }}">@lang('Users')</a></li>@endif
                   <hr>
@@ -63,7 +66,7 @@
               </li>
             @endguest
             <!-- Official Page -->
-            <li class="nav-item ms-2">
+            <li class="nav-item ms-2 d-block d-xl-none my-2 mb-xl-0">
               <a class="btn text-white official" href="https://warframe.com" target="_blank">@lang('Official Page')</a>
             </li>
           </ul>

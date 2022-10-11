@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Companion;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
@@ -20,15 +20,15 @@ class CollarTable extends Component
     public function render()
     {
         $this->collar = DB::table('user_collars as uc')
-                -> join('collars as col', 'uc.collar_id','=','col.id')
-                -> join('users as u', 'uc.user_id','=','u.id')
-                ->select('col.id as id', 'col.name as name', 'uc.owned as owned', 'col.pet_name as pet_name',
-                        'col.blueprint as r_blueprint', 'col.band as r_band', 'col.buckle as r_buckle',
-                        'uc.blueprint as blueprint', 'uc.band as band', 'uc.buckle as buckle')
-                ->where([['uc.user_id','=',Auth::user()->id], ['col.name', 'LIKE', "%$this->filter%"]])
-                ->get();
+            ->join('collars as col', 'uc.collar_id','=','col.id')
+            ->join('users as u', 'uc.user_id','=','u.id')
+            ->select('col.id as id', 'col.name as name', 'uc.owned as owned', 'col.pet_name as pet_name',
+                    'col.blueprint as r_blueprint', 'col.band as r_band', 'col.buckle as r_buckle',
+                    'uc.blueprint as blueprint', 'uc.band as band', 'uc.buckle as buckle')
+            ->where([['user_id','=',Auth::user()->id], ['col.name', 'LIKE', "%$this->filter%"]])
+            ->get();
 
-        return view('livewire.collar-table')->with([
+        return view('livewire.companion.collar-table')->with([
             'collars' => $this->collar,
             'filter' => $this->filter
         ]);
